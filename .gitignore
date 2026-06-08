@@ -1,0 +1,36 @@
+# Virtual environments
+venv/
+.venv/
+
+# Environment variables / API keys
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# VS Code
+.vscode/
+
+# Generated website output
+output/
+
+# Cache folders
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Logs and temp files
+*.log
+*.tmp
+
+venv/
+.venv/
+.env
+__pycache__/
+*.pyc
+.vscode/
+output/
