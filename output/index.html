@@ -9,90 +9,139 @@
 </head>
 <body>
 <nav class="navbar">
-  <div class="navbar-brand">
-    <a href="#home" class="navbar-logo">My Portfolio</a>
-  </div>
-  <ul class="navbar-nav">
+  <a href="#" class="navbar-brand">Spice Route Bistro</a>
+  <ul class="navbar-nav-list">
     <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
-    <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+    <li class="nav-item"><a href="#menu" class="nav-link">Menu</a></li>
+    <li class="nav-item"><a href="#reservation" class="nav-link">Reservation</a></li>
     <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
   </ul>
 </nav>
-<section class="hero-section">
+<section class="hero">
   <div class="hero-content">
-    <h1 class="hero-title">Hi, I'm [Your Name]</h1>
-    <p class="hero-subtitle">Frontend Developer | UI/UX Designer</p>
-    <p class="hero-description">Crafting intuitive and engaging web experiences with a passion for clean code and user-centric design.</p>
-    <div class="hero-actions">
-      <a href="/projects" class="button button-primary">View My Work</a>
-      <a href="/contact" class="button button-secondary">Get in Touch</a>
-    </div>
+    <h1 class="hero-title">Savor Bites</h1>
+    <p class="hero-subtitle">Experience Culinary Excellence – Fresh, Fast, and Flavorful.</p>
+    <a href="/menu" class="btn btn-primary">Order Online Now</a>
   </div>
   <div class="hero-image">
-    <img src="https://via.placeholder.com/400" alt="[Your Name] - Portfolio Avatar">
+    <img src="placeholder-hero-food.jpg" alt="Delicious food spread on a table">
   </div>
 </section>
-<section class="projects-grid">
-    <div class="container">
-        <h2 class="section-title">My Projects</h2>
-        <div class="grid">
-            <div class="project-card">
-                <img src="https://via.placeholder.com/400x250?text=Project+1+Image" alt="Project 1 Thumbnail" class="project-image">
-                <h3 class="project-title">E-commerce Website Redesign</h3>
-                <p class="project-description">A complete redesign and re-platforming of an existing e-commerce website to improve user experience and conversion rates.</p>
-                <a href="#" class="project-link">View Project</a>
-            </div>
-            <div class="project-card">
-                <img src="https://via.placeholder.com/400x250?text=Project+2+Image" alt="Project 2 Thumbnail" class="project-image">
-                <h3 class="project-title">Mobile Banking Application</h3>
-                <p class="project-description">Developed a secure and intuitive mobile banking application for both iOS and Android platforms, focusing on ease of use.</p>
-                <a href="#" class="project-link">View Project</a>
-            </div>
-            <div class="project-card">
-                <img src="https://via.placeholder.com/400x250?text=Project+3+Image" alt="Project 3 Thumbnail" class="project-image">
-                <h3 class="project-title">Data Visualization Dashboard</h3>
-                <p class="project-description">Created an interactive data visualization dashboard for a marketing agency to track campaign performance and insights.</p>
-                <a href="#" class="project-link">View Project</a>
-            </div>
-            <div class="project-card">
-                <img src="https://via.placeholder.com/400x250?text=Project+4+Image" alt="Project 4 Thumbnail" class="project-image">
-                <h3 class="project-title">Portfolio Website Development</h3>
-                <p class="project-description">Designed and developed a personal portfolio website for a graphic designer, showcasing their extensive work and services.</p>
-                <a href="#" class="project-link">View Project</a>
-            </div>
-            <div class="project-card">
-                <img src="https://via.placeholder.com/400x250?text=Project+5+Image" alt="Project 5 Thumbnail" class="project-image">
-                <h3 class="project-title">CMS Integration for Blog</h3>
-                <p class="project-description">Integrated a custom Content Management System (CMS) for a large-scale blogging platform, streamlining content creation and publishing.</p>
-                <a href="#" class="project-link">View Project</a>
-            </div>
-            <div class="project-card">
-                <img src="https://via.placeholder.com/400x250?text=Project+6+Image" alt="Project 6 Thumbnail" class="project-image">
-                <h3 class="project-title">Healthcare Patient Portal</h3>
-                <p class="project-description">Built a secure patient portal for a healthcare provider, allowing patients to manage appointments, view records, and communicate with doctors.</p>
-                <a href="#" class="project-link">View Project</a>
-            </div>
+
+<section class="menu-section" id="menu">
+    <h2>Our Menu</h2>
+
+    <div class="menu-grid">
+        <div class="menu-card">
+            <h3>Paneer Tikka</h3>
+            <p>Spicy grilled paneer served with fresh mint chutney.</p>
+            <span>₹249</span>
+        </div>
+
+        <div class="menu-card">
+            <h3>Butter Naan & Curry</h3>
+            <p>Fresh naan served with rich creamy curry.</p>
+            <span>₹199</span>
+        </div>
+
+        <div class="menu-card">
+            <h3>Veg Biryani</h3>
+            <p>Flavourful rice cooked with vegetables and Indian spices.</p>
+            <span>₹299</span>
+        </div>
+
+        <div class="menu-card">
+            <h3>Chocolate Brownie</h3>
+            <p>Warm brownie served with vanilla ice cream.</p>
+            <span>₹149</span>
         </div>
     </div>
 </section>
+
+<section class="reservation-form-section">
+  <div class="container">
+    <h2 class="section-title">Book Your Table</h2>
+    <form class="reservation-form">
+      <div class="form-group">
+        <label for="name" class="form-label">Full Name</label>
+        <input type="text" id="name" name="name" class="form-input" placeholder="Your Full Name" required>
+      </div>
+      <div class="form-group">
+        <label for="email" class="form-label">Email Address</label>
+        <input type="email" id="email" name="email" class="form-input" placeholder="your.email@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="phone" class="form-label">Phone Number</label>
+        <input type="tel" id="phone" name="phone" class="form-input" placeholder="+91 9876543210" pattern="[0-9]{10}" required>
+      </div>
+      <div class="form-group-row">
+        <div class="form-group">
+          <label for="date" class="form-label">Date</label>
+          <input type="date" id="date" name="date" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label for="time" class="form-label">Time</label>
+          <input type="time" id="time" name="time" class="form-input" min="10:00" max="22:00" value="19:00" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="guests" class="form-label">Number of Guests</label>
+        <select id="guests" name="guests" class="form-select" required>
+          <option value="">Select number of guests</option>
+          <option value="1">1 Person</option>
+          <option value="2">2 People</option>
+          <option value="3">3 People</option>
+          <option value="4">4 People</option>
+          <option value="5">5 People</option>
+          <option value="6">6 People</option>
+          <option value="7">7 People</option>
+          <option value="8">8 People</option>
+          <option value="9">9 People</option>
+          <option value="10">10+ People (Please call us for larger groups)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="requests" class="form-label">Special Requests (Optional)</label>
+        <textarea id="requests" name="requests" rows="4" class="form-textarea" placeholder="E.g., high chair for baby, dietary restrictions, preferred table location"></textarea>
+      </div>
+      <button type="submit" class="button button-primary">Confirm Reservation</button>
+    </form>
+  </div>
+</section>
 <footer class="footer">
-    <div class="footer-container">
-        <div class="footer-nav">
-            <ul class="footer-nav-list">
-                <li class="footer-nav-item"><a href="#home" class="footer-link">Home</a></li>
-                <li class="footer-nav-item"><a href="#projects" class="footer-link">Projects</a></li>
-                <li class="footer-nav-item"><a href="#contact" class="footer-link">Contact</a></li>
-            </ul>
-        </div>
-        <div class="footer-social">
-            <a href="#" aria-label="LinkedIn profile" class="social-link">LinkedIn</a>
-            <a href="#" aria-label="GitHub profile" class="social-link">GitHub</a>
-            <a href="#" aria-label="Twitter profile" class="social-link">Twitter</a>
-        </div>
-        <div class="footer-info">
-            <p class="copyright">&copy; 2026. All rights reserved.</p>
-        </div>
+  <div class="footer__container">
+    <div class="footer__section footer__brand-info">
+      <h3 class="footer__heading">Foodie Haven</h3>
+      <p class="footer__text">Delivering delightful dining experiences right to your doorstep. Savor the flavors, crafted with passion.</p>
+      <div class="footer__social-links">
+        <a href="#" class="footer__social-link" aria-label="Facebook">Facebook</a>
+        <a href="#" class="footer__social-link" aria-label="Instagram">Instagram</a>
+        <a href="#" class="footer__social-link" aria-label="Twitter">Twitter</a>
+      </div>
     </div>
+
+    <div class="footer__section footer__links">
+      <h3 class="footer__heading">Quick Links</h3>
+      <ul class="footer__list">
+        <li><a href="index.html" class="footer__link">Home</a></li>
+        <li><a href="menu.html" class="footer__link">Menu</a></li>
+        <li><a href="reservation.html" class="footer__link">Reservation</a></li>
+        <li><a href="contact.html" class="footer__link">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__section footer__contact-info">
+      <h3 class="footer__heading">Contact Us</h3>
+      <p class="footer__text">123 Food Street, Culinary City, India</p>
+      <p class="footer__text">Phone: +91 98765 43210</p>
+      <p class="footer__text">Email: info@foodiehaven.com</p>
+      <p class="footer__text">Hours: Mon-Sun: 11:00 AM - 10:00 PM</p>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <p class="footer__copyright">&copy; 2026 Foodie Haven. All rights reserved.</p>
+  </div>
 </footer>
 </body>
 </html>

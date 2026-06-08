@@ -1,25 +1,27 @@
 
-# Generated Portfolio Website
+# Generated Restaurant Website
 
 ## User Prompt
 
-Give me The Web page For my Portfolio
+create a website for ordering food online
 
 ## Website Type
 
-portfolio
+restaurant
 
 ## Pages Generated
 
 - Home
-- Projects
+- Menu
+- Reservation
 - Contact
 
 ## Components Generated
 
 - Navbar
 - Hero
-- Projects Grid
+- Menu Section
+- Reservation Form
 - Footer
 
 ## Agents Used
