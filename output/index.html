@@ -1,147 +1,198 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generated Website</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<nav class="navbar">
-  <a href="#" class="navbar-brand">Spice Route Bistro</a>
-  <ul class="navbar-nav-list">
-    <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
-    <li class="nav-item"><a href="#menu" class="nav-link">Menu</a></li>
-    <li class="nav-item"><a href="#reservation" class="nav-link">Reservation</a></li>
-    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-  </ul>
+<nav class="bg-gradient-to-r from-yellow-800 to-amber-700 p-4 shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center px-4">
+        <a href="#" class="text-white text-3xl font-bold tracking-wider hover:text-amber-200 transition duration-300">Culinary Haven</a>
+        <div class="hidden md:flex space-x-8">
+            <a href="#hero" class="text-white text-lg font-semibold hover:text-amber-200 transition duration-300 transform hover:scale-105">Home</a>
+            <a href="#about" class="text-white text-lg font-semibold hover:text-amber-200 transition duration-300 transform hover:scale-105">About Us</a>
+            <a href="#services" class="text-white text-lg font-semibold hover:text-amber-200 transition duration-300 transform hover:scale-105">Services</a>
+            <a href="#contact" class="text-white text-lg font-semibold hover:text-amber-200 transition duration-300 transform hover:scale-105">Contact</a>
+        </div>
+        <div class="md:hidden">
+            <button class="text-white text-3xl focus:outline-none">&#9776;</button>
+        </div>
+    </div>
 </nav>
-<section class="hero">
-  <div class="hero-content">
-    <h1 class="hero-title">Savor Bites</h1>
-    <p class="hero-subtitle">Experience Culinary Excellence – Fresh, Fast, and Flavorful.</p>
-    <a href="/menu" class="btn btn-primary">Order Online Now</a>
-  </div>
-  <div class="hero-image">
-    <img src="placeholder-hero-food.jpg" alt="Delicious food spread on a table">
-  </div>
-</section>
 
-<section class="menu-section" id="menu">
-    <h2>Our Menu</h2>
-
-    <div class="menu-grid">
-        <div class="menu-card">
-            <h3>Paneer Tikka</h3>
-            <p>Spicy grilled paneer served with fresh mint chutney.</p>
-            <span>₹249</span>
-        </div>
-
-        <div class="menu-card">
-            <h3>Butter Naan & Curry</h3>
-            <p>Fresh naan served with rich creamy curry.</p>
-            <span>₹199</span>
-        </div>
-
-        <div class="menu-card">
-            <h3>Veg Biryani</h3>
-            <p>Flavourful rice cooked with vegetables and Indian spices.</p>
-            <span>₹299</span>
-        </div>
-
-        <div class="menu-card">
-            <h3>Chocolate Brownie</h3>
-            <p>Warm brownie served with vanilla ice cream.</p>
-            <span>₹149</span>
+<header id="hero" class="relative bg-cover bg-center h-[70vh] md:h-[90vh]" style="background-image: url('https://images.unsplash.com/photo-1517248135460-4c382103f56b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80');">
+    <div class="absolute inset-0 bg-black opacity-60"></div>
+    <div class="relative container mx-auto flex flex-col items-center justify-center h-full text-center px-4">
+        <h1 class="text-white text-5xl md:text-7xl font-extrabold leading-tight drop-shadow-lg animate-fade-in-up">Experience Exquisite Flavors</h1>
+        <p class="text-white text-lg md:text-2xl mt-4 max-w-2xl font-light drop-shadow-md animate-fade-in-up delay-200">Where every dish tells a story of culinary passion and tradition.</p>
+        <div class="mt-8 flex space-x-4 animate-fade-in-up delay-400">
+            <a href="#services" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-opacity-50">View Our Menu</a>
+            <a href="#contact" class="bg-white text-amber-800 hover:bg-gray-100 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50">Make a Reservation</a>
         </div>
     </div>
-</section>
+</header>
 
-<section class="reservation-form-section">
-  <div class="container">
-    <h2 class="section-title">Book Your Table</h2>
-    <form class="reservation-form">
-      <div class="form-group">
-        <label for="name" class="form-label">Full Name</label>
-        <input type="text" id="name" name="name" class="form-input" placeholder="Your Full Name" required>
-      </div>
-      <div class="form-group">
-        <label for="email" class="form-label">Email Address</label>
-        <input type="email" id="email" name="email" class="form-input" placeholder="your.email@example.com" required>
-      </div>
-      <div class="form-group">
-        <label for="phone" class="form-label">Phone Number</label>
-        <input type="tel" id="phone" name="phone" class="form-input" placeholder="+91 9876543210" pattern="[0-9]{10}" required>
-      </div>
-      <div class="form-group-row">
-        <div class="form-group">
-          <label for="date" class="form-label">Date</label>
-          <input type="date" id="date" name="date" class="form-input" required>
+<main>
+    <section id="about" class="py-16 md:py-24 bg-gray-50 px-4">
+        <div class="container mx-auto flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2">
+                <img src="https://images.unsplash.com/photo-1552504287-5757d540203f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Restaurant interior" class="rounded-3xl shadow-2xl w-full h-auto object-cover transform hover:scale-105 transition duration-500 ease-in-out">
+            </div>
+            <div class="md:w-1/2 text-center md:text-left">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-amber-800 mb-6 leading-tight">Our Story: A Taste of Passion</h2>
+                <p class="text-gray-700 text-lg md:text-xl leading-relaxed mb-6">
+                    Culinary Haven began with a simple dream: to share authentic, heartwarming cuisine crafted with the freshest local ingredients.
+                    Founded by a team of passionate chefs, our journey has been about blending tradition with innovation, creating dishes that
+                    delight the senses and foster cherished memories. Every ingredient is hand-picked, every spice carefully measured,
+                    and every plate a work of art.
+                </p>
+                <p class="text-gray-600 text-base md:text-lg leading-relaxed">
+                    We believe food is more than sustenance; it's an experience, a celebration, and a bridge between cultures.
+                    Come, be a part of our culinary family.
+                </p>
+            </div>
         </div>
-        <div class="form-group">
-          <label for="time" class="form-label">Time</label>
-          <input type="time" id="time" name="time" class="form-input" min="10:00" max="22:00" value="19:00" required>
+    </section>
+
+    <section id="services" class="py-16 md:py-24 bg-amber-50 px-4">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-amber-800 mb-12">Our Culinary Offerings</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 group">
+                    <div class="text-5xl text-amber-600 mb-6 group-hover:text-amber-700 transition duration-300">🍽️</div>
+                    <h3 class="text-2xl font-bold text-amber-800 mb-4">Dine-in Experience</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Savor our exquisite dishes in our elegantly designed dining space. Perfect for intimate dinners or lively gatherings.
+                    </p>
+                </div>
+                <div class="bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 group">
+                    <div class="text-5xl text-amber-600 mb-6 group-hover:text-amber-700 transition duration-300">📦</div>
+                    <h3 class="text-2xl font-bold text-amber-800 mb-4">Takeaway & Delivery</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Enjoy our culinary delights from the comfort of your home. Quick and convenient online ordering available.
+                    </p>
+                </div>
+                <div class="bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 group">
+                    <div class="text-5xl text-amber-600 mb-6 group-hover:text-amber-700 transition duration-300">🎉</div>
+                    <h3 class="text-2xl font-bold text-amber-800 mb-4">Private Events & Catering</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Let us cater your special occasions. From corporate events to family celebrations, we craft unforgettable menus.
+                    </p>
+                </div>
+                <div class="bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 group">
+                    <div class="text-5xl text-amber-600 mb-6 group-hover:text-amber-700 transition duration-300">🍷</div>
+                    <h3 class="text-2xl font-bold text-amber-800 mb-4">Beverage Selection</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Complement your meal with our curated selection of fine wines, craft beers, and refreshing mocktails.
+                    </p>
+                </div>
+                <div class="bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 group">
+                    <div class="text-5xl text-amber-600 mb-6 group-hover:text-amber-700 transition duration-300">🍰</div>
+                    <h3 class="text-2xl font-bold text-amber-800 mb-4">Dessert & Coffee Bar</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        End your meal on a sweet note with our artisanal desserts and gourmet coffee selection.
+                    </p>
+                </div>
+                <div class="bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 group">
+                    <div class="text-5xl text-amber-600 mb-6 group-hover:text-amber-700 transition duration-300">🎁</div>
+                    <h3 class="text-2xl font-bold text-amber-800 mb-4">Gift Vouchers</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Share the gift of exceptional dining with our customizable gift vouchers, perfect for any occasion.
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label for="guests" class="form-label">Number of Guests</label>
-        <select id="guests" name="guests" class="form-select" required>
-          <option value="">Select number of guests</option>
-          <option value="1">1 Person</option>
-          <option value="2">2 People</option>
-          <option value="3">3 People</option>
-          <option value="4">4 People</option>
-          <option value="5">5 People</option>
-          <option value="6">6 People</option>
-          <option value="7">7 People</option>
-          <option value="8">8 People</option>
-          <option value="9">9 People</option>
-          <option value="10">10+ People (Please call us for larger groups)</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="requests" class="form-label">Special Requests (Optional)</label>
-        <textarea id="requests" name="requests" rows="4" class="form-textarea" placeholder="E.g., high chair for baby, dietary restrictions, preferred table location"></textarea>
-      </div>
-      <button type="submit" class="button button-primary">Confirm Reservation</button>
-    </form>
-  </div>
-</section>
-<footer class="footer">
-  <div class="footer__container">
-    <div class="footer__section footer__brand-info">
-      <h3 class="footer__heading">Foodie Haven</h3>
-      <p class="footer__text">Delivering delightful dining experiences right to your doorstep. Savor the flavors, crafted with passion.</p>
-      <div class="footer__social-links">
-        <a href="#" class="footer__social-link" aria-label="Facebook">Facebook</a>
-        <a href="#" class="footer__social-link" aria-label="Instagram">Instagram</a>
-        <a href="#" class="footer__social-link" aria-label="Twitter">Twitter</a>
-      </div>
-    </div>
+    </section>
 
-    <div class="footer__section footer__links">
-      <h3 class="footer__heading">Quick Links</h3>
-      <ul class="footer__list">
-        <li><a href="index.html" class="footer__link">Home</a></li>
-        <li><a href="menu.html" class="footer__link">Menu</a></li>
-        <li><a href="reservation.html" class="footer__link">Reservation</a></li>
-        <li><a href="contact.html" class="footer__link">Contact</a></li>
-      </ul>
-    </div>
+    <section id="contact" class="py-16 md:py-24 bg-gray-100 px-4">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-amber-800 mb-12">Get in Touch</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="bg-white rounded-3xl shadow-xl p-8 text-left hover:shadow-2xl transition duration-300 transform hover:-translate-y-2">
+                    <h3 class="text-3xl font-bold text-amber-800 mb-6">Visit Us or Call</h3>
+                    <p class="text-gray-700 text-lg mb-4 flex items-center"><span class="mr-3 text-amber-600 text-2xl">📍</span>123 Flavors Street, Culinary City, India</p>
+                    <p class="text-gray-700 text-lg mb-4 flex items-center"><span class="mr-3 text-amber-600 text-2xl">📞</span>+91 98765 43210</p>
+                    <p class="text-gray-700 text-lg mb-4 flex items-center"><span class="mr-3 text-amber-600 text-2xl">📧</span>info@culinaryhaven.in</p>
+                    <h4 class="text-2xl font-semibold text-amber-700 mt-8 mb-4">Opening Hours</h4>
+                    <ul class="text-gray-700 text-lg">
+                        <li class="mb-2">Monday - Friday: 11:00 AM - 10:00 PM</li>
+                        <li class="mb-2">Saturday - Sunday: 10:00 AM - 11:00 PM</li>
+                        <li class="mb-2">Public Holidays: Please check our social media</li>
+                    </ul>
+                </div>
 
-    <div class="footer__section footer__contact-info">
-      <h3 class="footer__heading">Contact Us</h3>
-      <p class="footer__text">123 Food Street, Culinary City, India</p>
-      <p class="footer__text">Phone: +91 98765 43210</p>
-      <p class="footer__text">Email: info@foodiehaven.com</p>
-      <p class="footer__text">Hours: Mon-Sun: 11:00 AM - 10:00 PM</p>
-    </div>
-  </div>
+                <div class="bg-white rounded-3xl shadow-xl p-8 text-left hover:shadow-2xl transition duration-300 transform hover:-translate-y-2">
+                    <h3 class="text-3xl font-bold text-amber-800 mb-6">Send Us a Message</h3>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 text-sm font-semibold mb-2">Your Name</label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 transition duration-200">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 text-sm font-semibold mb-2">Your Email</label>
+                            <input type="email" id="email" name="email" placeholder="john.doe@example.com" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 transition duration-200">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-700 text-sm font-semibold mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Tell us how we can help..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 transition duration-200"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-6 rounded-full shadow-md transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-opacity-50">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 
-  <div class="footer__bottom">
-    <p class="footer__copyright">&copy; 2026 Foodie Haven. All rights reserved.</p>
-  </div>
+<footer class="bg-gray-900 text-white py-12 px-4">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+        <div>
+            <h3 class="text-2xl font-bold text-amber-400 mb-4">Culinary Haven</h3>
+            <p class="text-gray-400 leading-relaxed">Experience a symphony of flavors, where every dish is crafted with passion and served with love.</p>
+            <div class="flex justify-center md:justify-start space-x-4 mt-6">
+                <a href="#" class="text-gray-400 hover:text-amber-400 transition duration-300 transform hover:scale-125">
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.776-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33V22C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-amber-400 transition duration-300 transform hover:scale-125">
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.792.01 3.249.029a6.03 6.03 0 011.774.329 6.76 6.76 0 012.062 1.254 6.76 6.76 0 011.254 2.062 6.03 6.03 0 01.329 1.774c.019.457.029.819.029 3.249s-.01 2.43-.029 3.249a6.03 6.03 0 01-.329 1.774 6.76 6.76 0 01-1.254 2.062 6.76 6.76 0 01-2.062 1.254 6.03 6.03 0 01-1.774.329c-.457.019-.819.029-3.249.029s-2.43-.01-3.249-.029a6.03 6.03 0 01-1.774-.329 6.76 6.76 0 01-2.062-1.254 6.76 6.76 0 01-1.254-2.062 6.03 6.03 0 01-.329-1.774c-.019-.457-.029-.819-.029-3.249s.01-2.43.029-3.249a6.03 6.03 0 01.329-1.774 6.76 6.76 0 011.254-2.062A6.76 6.76 0 015.65 3.754a6.03 6.03 0 011.774-.329c.457-.019.819-.029 3.249-.029zm0 1.677c-2.055 0-2.312.008-3.173.046a4.303 4.303 0 00-1.282.249 4.867 4.867 0 00-1.706 1.054A4.867 4.867 0 002.396 6.94c-.2.438-.283.843-.324 1.282-.038.86-.046 1.117-.046 3.173s.008 2.312.046 3.173a4.303 4.303 0 00.249 1.282 4.867 4.867 0 001.054 1.706 4.867 4.867 0 001.706 1.054 4.303 4.303 0 001.282.249c.86.038 1.117.046 3.173.046s2.312-.008 3.173-.046a4.303 4.303 0 001.282-.249 4.867 4.867 0 001.706-1.054 4.867 4.867 0 001.054-1.706 4.303 4.303 0 00.249-1.282c.038-.86.046-1.117.046-3.173s-.008-2.312-.046-3.173a4.303 4.303 0 00-.249-1.282 4.867 4.867 0 00-1.054-1.706A4.867 4.867 0 0017.06 2.396a4.303 4.303 0 00-1.282-.249c-.86-.038-1.117-.046-3.173-.046zm0 3.863a6.403 6.403 0 100 12.806 6.403 6.403 0 000-12.806zM12.315 16.79a4.475 4.475 0 110-8.95 4.475 4.475 0 010 8.95zM17.41 5.626a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-amber-400 transition duration-300 transform hover:scale-125">
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M8.29 20.251c-1.353.189-2.752-.23-3.913-1.173l-.409-.344a2.986 2.986 0 01-1.037-3.044c.211-.902.66-1.724 1.34-2.34l-.489-.13a1.944 1.944 0 00-1.393-.521c-.482.016-.948.163-1.343.43L.5 13.916v-.713c0-1.78.74-3.415 1.96-4.597.593-.586 1.281-1.082 2.03-1.472a7.653 7.653 0 012.324-.765c.677-.076 1.358-.109 2.038-.098h.078c.84.004 1.677.086 2.498.245.824.16 1.583.42 2.26.772a8.675 8.675 0 012.016 1.189c.563.4.996.883 1.307 1.439a6.002 6.002 0 01.933 1.761 4.795 4.795 0 01.272 1.838v.714l-.001.002c-.004.032-.008.064-.012.096-.051.408-.12.808-.207 1.203-.314 1.45-.964 2.76-1.916 3.93-1.077 1.33-2.38 2.43-3.87 3.23a13.95 13.95 0 01-3.15.932c-.93.11-1.87.17-2.8.17-.457 0-.91-.016-1.353-.047zm3.76-.799c.928.026 1.844-.015 2.748-.135.882-.117 1.706-.356 2.457-.704.8-.363 1.47-.852 2.002-1.464.444-.5.787-1.07.994-1.688.174-.52.274-1.054.298-1.597V12.093c0-.033.004-.067.01-.1-.005.033-.008.067-.01.1v-.001c-.004-.031-.008-.063-.012-.095-.05-.407-.119-.807-.206-1.202-.313-1.45-.964-2.76-1.916-3.93-1.077-1.33-2.38-2.43-3.87-3.23a13.95 13.95 0 00-3.15-.932c-.93-.11-1.87-.17-2.8-.17-.457 0-.91.016-1.353.047a13.883 13.883 0 00-2.222.388 8.675 8.675 0 00-2.016 1.189c-.563.4-.996.883-1.307 1.439a6.002 6.002 0 00-.933 1.761 4.795 4.795 0 00-.272 1.838v.714l-.001.002c-.004.032-.008.064-.012.096-.051.408-.12.808-.207 1.203-.314 1.45-.964 2.76-1.916 3.93-1.077 1.33-2.38 2.43-3.87 3.23a13.95 13.95 0 01-3.15.932c-.93.11-1.87.17-2.8.17-.457 0-.91-.016-1.353-.047z" />
+                        <path d="M12 10a2 2 0 100 4 2 2 0 000-4zm0 1.6a.4.4 0 110-.8.4.4 0 010 .8z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div>
+            <h3 class="text-2xl font-bold text-amber-400 mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+                <li><a href="#hero" class="text-gray-400 hover:text-amber-400 transition duration-300">Home</a></li>
+                <li><a href="#about" class="text-gray-400 hover:text-amber-400 transition duration-300">About Us</a></li>
+                <li><a href="#services" class="text-gray-400 hover:text-amber-400 transition duration-300">Our Services</a></li>
+                <li><a href="#contact" class="text-gray-400 hover:text-amber-400 transition duration-300">Contact Us</a></li>
+                <li><a href="#" class="text-gray-400 hover:text-amber-400 transition duration-300">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3 class="text-2xl font-bold text-amber-400 mb-4">Contact Info</h3>
+            <p class="text-gray-400 mb-2">123 Flavors Street</p>
+            <p class="text-gray-400 mb-2">Culinary City, PIN 123456</p>
+            <p class="text-gray-400 mb-2">India</p>
+            <p class="text-gray-400 mb-2">Phone: +91 98765 43210</p>
+            <p class="text-gray-400">Email: info@culinaryhaven.in</p>
+        </div>
+    </div>
+    <div class="border-t border-gray-700 mt-10 pt-8 text-center text-gray-500 text-sm">
+        &copy; 2026 Culinary Haven. All rights reserved.
+    </div>
 </footer>
 </body>
 </html>

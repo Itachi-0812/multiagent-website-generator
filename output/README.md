@@ -1,27 +1,27 @@
 
-# Generated Restaurant Website
+# Generated Gym Website
 
 ## User Prompt
 
-create a website for ordering food online
+create a gym website powerlifter
 
 ## Website Type
 
-restaurant
+gym
 
 ## Pages Generated
 
 - Home
-- Menu
-- Reservation
+- Programs
+- Trainers
 - Contact
 
 ## Components Generated
 
 - Navbar
 - Hero
-- Menu Section
-- Reservation Form
+- Programs Section
+- Trainer Section
 - Footer
 
 ## Agents Used

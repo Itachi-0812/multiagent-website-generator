@@ -1,69 +1,149 @@
+import os
 import sys
 import webbrowser
-from agents.readme_agent import ReadmeAgent
-import os
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, PROJECT_ROOT)
 
-from agents.planner import PlannerAgent
-from core.task_executor import TaskExecutor
+from core.site_generator import generate_site
 
 
-planner = PlannerAgent()
-executor = TaskExecutor()
-readme_agent = ReadmeAgent()
+def main():
+    user_prompt = input("Describe your website: ")
 
-user_prompt = input("Describe your website: ")
+    result = generate_site(
+        prompt=user_prompt,
+        use_ai=True,
+        save_files=True
+    )
 
-plan = planner.create_plan(user_prompt)
+    print("\n===== PLAN =====")
+    print({
+        "website_type": result["website_type"],
+        "sections": result["sections"]
+    })
 
-print("\n===== PLAN =====")
-print(plan.model_dump())
+    print(f"\nWebsite saved at: {result['html_path']}")
+    print(f"CSS saved at: {result['css_path']}")
 
-result = executor.execute(plan)
+    html_path = os.path.abspath(result["html_path"])
+    css_path = os.path.abspath(result["css_path"])
 
-html_content = "\n".join(result["ui"])
-css_content = result.get("css", "")
+    with open(html_path, "r", encoding="utf-8") as file:
+        generated_html = file.read()
 
-os.makedirs("output", exist_ok=True)
+    with open(css_path, "r", encoding="utf-8") as file:
+        generated_css = file.read()
 
-full_html = f"""
+    preview_html = f"""
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generated Website</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Website Preview</title>
+
+    <style>
+        body {{
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+        }}
+
+        .preview-toolbar {{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: #111827;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 9999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }}
+
+        .preview-toolbar h2 {{
+            margin: 0;
+            font-size: 18px;
+        }}
+
+        .fullscreen-btn {{
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }}
+
+        .fullscreen-btn:hover {{
+            background: #1d4ed8;
+        }}
+
+        #previewArea {{
+            margin-top: 60px;
+            min-height: calc(100vh - 60px);
+            background: white;
+            overflow: auto;
+        }}
+
+        #previewArea:fullscreen {{
+            margin-top: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: auto;
+            background: white;
+        }}
+
+        {generated_css}
+    </style>
 </head>
+
 <body>
-{html_content}
+
+    <div class="preview-toolbar">
+        <h2>Generated Website Preview</h2>
+
+        <button class="fullscreen-btn" onclick="openFullScreen()">
+            Full Screen Preview
+        </button>
+    </div>
+
+    <div id="previewArea">
+        {generated_html}
+    </div>
+
+    <script>
+        function openFullScreen() {{
+            const preview = document.getElementById("previewArea");
+
+            if (preview.requestFullscreen) {{
+                preview.requestFullscreen();
+            }} else if (preview.webkitRequestFullscreen) {{
+                preview.webkitRequestFullscreen();
+            }} else if (preview.msRequestFullscreen) {{
+                preview.msRequestFullscreen();
+            }}
+        }}
+    </script>
+
 </body>
 </html>
 """
 
-with open("output/index.html", "w", encoding="utf-8") as file:
-    file.write(full_html)
+    preview_path = os.path.join(PROJECT_ROOT, "output", "preview.html")
 
-print("\nWebsite saved at: output/index.html")
+    with open(preview_path, "w", encoding="utf-8") as file:
+        file.write(preview_html)
 
-with open("output/styles.css", "w", encoding="utf-8") as file:
-    file.write(css_content)
+    print(f"Preview saved at: {preview_path}")
 
-print("Styles saved at: output/styles.css")
+    webbrowser.open(os.path.abspath(preview_path))
 
-readme_content = readme_agent.run(plan)
 
-with open("output/README.md", "w", encoding="utf-8") as file:
-    file.write(readme_content)
-
-print("README saved at: output/README.md")
-
-print("\n===== GENERATED HTML =====\n")
-print(html_content)
-
-print("\n===== EXECUTION RESULT =====")
-print(result)
-
-website_path = os.path.abspath("output/index.html")
-webbrowser.open(f"file://{website_path}")
+if __name__ == "__main__":
+    main()

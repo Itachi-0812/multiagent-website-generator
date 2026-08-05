@@ -1,118 +1,88 @@
-from schemas.plan_schemas import Plan, Task
-from core.intent_classifier import IntentClassifier
-import uuid
+from models.website_plan import WebsitePlan
 
 
 class PlannerAgent:
-    def __init__(self):
-        self.classifier = IntentClassifier()
+    def create_plan(self, user_prompt: str) -> WebsitePlan:
+        user_prompt = user_prompt.lower()
 
-    def create_plan(self, prompt: str):
-        intent = self.classifier.classify(prompt)
-        website_type = intent["website_type"]
+        if "portfolio" in user_prompt:
+            return self._portfolio_plan()
 
-        structure = self._get_structure(website_type)
-        tasks = self._build_tasks(structure, website_type)
+        elif "restaurant" in user_prompt or "food" in user_prompt:
+            return self._restaurant_plan()
 
-        return Plan(
-            website_type=website_type,
-            pages=structure["pages"],
-            components=structure["components"],
-            tasks=tasks,
-            user_prompt=prompt
+        elif "blog" in user_prompt:
+            return self._blog_plan()
+
+        elif "business" in user_prompt or "company" in user_prompt:
+            return self._business_plan()
+
+        else:
+            return self._generic_plan()
+
+    def _portfolio_plan(self) -> WebsitePlan:
+        return WebsitePlan(
+            website_type="portfolio",
+            sections=[
+                "navbar",
+                "hero",
+                "about",
+                "skills",
+                "projects",
+                "contact",
+                "footer"
+            ]
         )
 
-    def _get_structure(self, website_type: str):
-        templates = {
-            "portfolio": {
-                "pages": ["Home", "Projects", "Contact"],
-                "components": ["Navbar", "Hero", "Projects Grid", "Footer"]
-            },
-            "saas": {
-                "pages": ["Home", "Pricing", "Contact"],
-                "components": ["Navbar", "Hero", "Features", "Pricing", "Footer"]
-            },
-            "restaurant": {
-                "pages": ["Home", "Menu", "Reservation", "Contact"],
-                "components": ["Navbar", "Hero", "Menu Section", "Reservation Form", "Footer"]
-            },
-            "ecommerce": {
-                "pages": ["Home", "Products", "Cart", "Checkout"],
-                "components": ["Navbar", "Hero", "Product Grid", "Cart", "Checkout", "Footer"]
-            },
-            "blog": {
-                "pages": ["Home", "Articles", "About", "Contact"],
-                "components": ["Navbar", "Hero", "Article Grid", "Footer"]
-            },
-            "gym": {
-                "pages": ["Home", "Programs", "Trainers", "Contact"],
-                "components": ["Navbar", "Hero", "Programs Section", "Trainer Section", "Footer"]
-            },
-        }
+    def _restaurant_plan(self) -> WebsitePlan:
+        return WebsitePlan(
+            website_type="restaurant",
+            sections=[
+                "navbar",
+                "hero",
+                "menu",
+                "about",
+                "contact",
+                "footer"
+            ]
+        )
 
-        return templates.get(website_type, {
-            "pages": ["Home"],
-            "components": ["Navbar", "Hero", "Footer"]
-        })
+    def _blog_plan(self) -> WebsitePlan:
+        return WebsitePlan(
+            website_type="blog",
+            sections=[
+                "navbar",
+                "hero",
+                "featured_posts",
+                "categories",
+                "newsletter",
+                "footer"
+            ]
+        )
 
-    def _build_tasks(self, structure: dict, website_type: str):
-        tasks = []
+    def _business_plan(self) -> WebsitePlan:
+        return WebsitePlan(
+            website_type="business",
+            sections=[
+                "navbar",
+                "hero",
+                "services",
+                "about",
+                "testimonials",
+                "contact",
+                "footer"
+            ]
+        )
 
-        for comp in structure["components"]:
-            tasks.append(Task(
-                id=str(uuid.uuid4()),
-                agent="UI_AGENT",
-                task=f"Generate {comp}",
-                depends_on=[]
-            ))
-
-        # Content tasks based on website type
-        if website_type == "portfolio":
-            tasks.append(Task(
-                id=str(uuid.uuid4()),
-                agent="CONTENT_AGENT",
-                task="Generate portfolio project descriptions",
-                depends_on=[]
-            ))
-
-        elif website_type == "restaurant":
-            tasks.append(Task(
-                id=str(uuid.uuid4()),
-                agent="CONTENT_AGENT",
-                task="Generate restaurant menu items and descriptions",
-                depends_on=[]
-            ))
-
-        elif website_type == "blog":
-            tasks.append(Task(
-                id=str(uuid.uuid4()),
-                agent="CONTENT_AGENT",
-                task="Generate blog article titles and summaries",
-                depends_on=[]
-            ))
-
-        elif website_type == "saas":
-            tasks.append(Task(
-                id=str(uuid.uuid4()),
-                agent="CONTENT_AGENT",
-                task="Generate SaaS feature descriptions and pricing content",
-                depends_on=[]
-            ))
-
-        elif website_type == "ecommerce":
-            tasks.append(Task(
-                id=str(uuid.uuid4()),
-                agent="CONTENT_AGENT",
-                task="Generate product names, descriptions, and categories",
-                depends_on=[]
-            ))
-
-        elif website_type == "gym":
-            tasks.append(Task(
-                id=str(uuid.uuid4()),
-                agent="CONTENT_AGENT",
-                task="Generate gym programs, trainer bios, and fitness content",
-                depends_on=[]
-            ))
-
-        return tasks
+    def _generic_plan(self) -> WebsitePlan:
+        return WebsitePlan(
+            website_type="generic",
+            sections=[
+                "navbar",
+                "hero",
+                "about",
+                "services",
+                "contact",
+                "footer"
+            ]
+        )
