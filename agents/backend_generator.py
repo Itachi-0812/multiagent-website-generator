@@ -20,9 +20,8 @@ class BackendGenerator:
         }
 
     def _generate_main_app(self, website_type, website_name, sections):
-        return f'''from fastapi import FastAPI, Depends, HTTPException, status
+        return f'''from fastapi import FastAPI, Depends, HTTPException, status, Header
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.security import HTTPBearer, HTTPAuthCredentials
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -59,8 +58,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-security = HTTPBearer()
-
 def get_db():
     db = SessionLocal()
     try:
@@ -78,14 +75,19 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm="HS256")
     return encoded_jwt
 
-def verify_token(credentials: HTTPAuthCredentials = Depends(security)):
+def verify_token(authorization: Optional[str] = Header(None)):
+    if not authorization:
+        raise HTTPException(status_code=401, detail="Missing authorization header")
     try:
-        payload = jwt.decode(credentials.credentials, SECRET_KEY, algorithms=["HS256"])
+        scheme, credentials = authorization.split(" ", 1)
+        if scheme.lower() != "bearer":
+            raise HTTPException(status_code=401, detail="Invalid authorization scheme")
+        payload = jwt.decode(credentials, SECRET_KEY, algorithms=["HS256"])
         email: str = payload.get("sub")
         if email is None:
             raise HTTPException(status_code=401, detail="Invalid token")
         return email
-    except jwt.InvalidTokenError:
+    except (jwt.InvalidTokenError, ValueError, IndexError):
         raise HTTPException(status_code=401, detail="Invalid token")
 
 # Schemas
