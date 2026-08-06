@@ -2,7 +2,7 @@ import requests
 
 # Ollama API endpoint (runs locally on your machine)
 OLLAMA_API_URL = "http://localhost:11434/api/generate"
-MODEL = "llama2"  # Change to "mistral" if you prefer that model
+MODEL = "mistral"
 
 
 def ask_gemini(prompt):
