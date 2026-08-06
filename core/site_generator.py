@@ -22,7 +22,7 @@ def clean_code(code):
     return code.strip()
 
 
-def generate_site(prompt, use_ai=True, save_files=True):
+def generate_site(prompt, use_ai=True, save_files=True, generate_backend=False):
     planner = PlannerAgent()
     executor = TaskExecutor(use_ai=use_ai)
 
@@ -63,7 +63,36 @@ def generate_site(prompt, use_ai=True, save_files=True):
         with open(css_path, "w", encoding="utf-8") as file:
             file.write(css_content)
 
-    return {
+    backend_data = None
+    if generate_backend:
+        from agents.backend_generator import BackendGenerator
+        backend_gen = BackendGenerator()
+        backend_data = backend_gen.generate_backend(
+            website_type=plan.website_type,
+            website_name=extract_website_name(prompt),
+            sections=plan.sections
+        )
+
+        if save_files:
+            backend_output_dir = os.path.join(PROJECT_ROOT, "output", "backend")
+            os.makedirs(backend_output_dir, exist_ok=True)
+
+            with open(os.path.join(backend_output_dir, "main.py"), "w", encoding="utf-8") as file:
+                file.write(backend_data["main_app"])
+
+            with open(os.path.join(backend_output_dir, "models.py"), "w", encoding="utf-8") as file:
+                file.write(backend_data["models"])
+
+            with open(os.path.join(backend_output_dir, "admin.html"), "w", encoding="utf-8") as file:
+                file.write(backend_data["admin_dashboard"])
+
+            with open(os.path.join(backend_output_dir, "requirements.txt"), "w", encoding="utf-8") as file:
+                file.write(backend_data["requirements"])
+
+            with open(os.path.join(backend_output_dir, ".env.example"), "w", encoding="utf-8") as file:
+                file.write(backend_data["env_template"])
+
+    result = {
         "website_type": plan.website_type,
         "sections": plan.sections,
         "html": html_content,
@@ -72,3 +101,16 @@ def generate_site(prompt, use_ai=True, save_files=True):
         "html_path": html_path,
         "css_path": css_path
     }
+
+    if backend_data:
+        result["backend"] = backend_data
+        result["backend_path"] = os.path.join(output_dir, "backend")
+
+    return result
+
+
+def extract_website_name(prompt):
+    words = prompt.split()
+    if len(words) > 2:
+        return " ".join(words[:3]).title()
+    return "Generated Website"
