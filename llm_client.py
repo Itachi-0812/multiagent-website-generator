@@ -1,21 +1,36 @@
-from dotenv import load_dotenv
-import os
-from google import genai
+import requests
 
-load_dotenv()
-
-api_key = os.getenv("GEMINI_API_KEY")
-
-if not api_key:
-    raise ValueError("GEMINI_API_KEY not found. Check your .env file.")
-
-client = genai.Client(api_key=api_key)
+# Ollama API endpoint (runs locally on your machine)
+OLLAMA_API_URL = "http://localhost:11434/api/generate"
+MODEL = "llama2"  # Change to "mistral" if you prefer that model
 
 
 def ask_gemini(prompt):
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=prompt
-    )
+    """
+    Send prompt to local Ollama instance running Llama2
+    No API key needed - runs completely locally!
+    """
+    data = {
+        "model": MODEL,
+        "prompt": prompt,
+        "stream": False,
+        "temperature": 0.7,
+    }
 
-    return response.text
+    try:
+        response = requests.post(OLLAMA_API_URL, json=data, timeout=300)
+
+        if response.status_code != 200:
+            raise ValueError(f"Ollama Error: {response.status_code} - {response.text}")
+
+        result = response.json()
+        return result["response"].strip()
+
+    except requests.exceptions.ConnectionError:
+        raise ConnectionError(
+            "Cannot connect to Ollama. Make sure:\n"
+            "1. Ollama is installed from https://ollama.ai/\n"
+            "2. Ollama is running (should start automatically)\n"
+            "3. A model is downloaded: ollama pull llama2\n"
+            "4. It's listening on http://localhost:11434"
+        )
